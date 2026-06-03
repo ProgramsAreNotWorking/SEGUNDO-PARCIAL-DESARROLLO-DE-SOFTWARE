@@ -1,15 +1,20 @@
 public class Grade{
-  private Subject subject;
+  private int subjectId;
 
   private int firstTest = 0;
   private int secondTest = 0;
   private int thirdTest = 0;
   private int professorJudment = 0;
 
-  public void setSubject(Subject sub){
-    subject = sub;
+  public Grade(int subjectId){
+    this.subjectId = subjectId;
   }
 
+  public int Subject{
+    get{
+      return subjectId;
+    }
+  }
   public int FirstTest { 
     get { return firstTest;}
     set { 
@@ -55,7 +60,7 @@ public class Grade{
     }
   }
 
-  public int total{
+  public int Total{
     get{  return firstTest + secondTest + thirdTest + professorJudment;}
   }
 
