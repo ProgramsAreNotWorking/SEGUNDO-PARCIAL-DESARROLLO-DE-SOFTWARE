@@ -30,6 +30,14 @@ public class Student {
   }
 
   public void AddGrade(Grade grade){
+    foreach(Grade g in grades){
+      if(g.subject.name == grade.subject.name){
+        Console.WriteLine("This grade is already recorded.");
+        Console.WriteLine("Maybe you'd like do update it instead.");
+        return;
+      }
+    }
+
     grades.add(grade);
   }
 
