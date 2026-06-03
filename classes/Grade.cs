@@ -6,7 +6,7 @@ public class Grade{
   private int thirdTest = 0;
   private int professorJudment = 0;
 
-  private Subject setSubject(Subject sub){
+  public void setSubject(Subject sub){
     subject = sub;
   }
 
@@ -33,7 +33,7 @@ public class Grade{
     }
   }
 
-  public int thirdTest { 
+  public int ThirdTest { 
     get { return thirdTest;}
     set { 
       if(value < 0 || value > 15){
@@ -44,7 +44,7 @@ public class Grade{
     }
   }
 
-  public int professorJudment { 
+  public int ProfessorJudment { 
     get { return professorJudment;}
     set { 
       if(value < 0 || value > 40){

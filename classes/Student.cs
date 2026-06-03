@@ -1,44 +1,26 @@
 using System.Collections.Generic;
+
 public class Student {
   private string name;
   private string surname;
-  private LinkedList<Grade> grades = new LinkedList<Grade>([]);
+  private Dictionary<string, Grade> grades = [];
 
   public Student(string name, string surname){
     this.name = name;
     this.surname = surname;
   }
 
-  public Student(string name, string surname, int grades){
-    this.name = name;
-    this.surname = surname;
-    this.grades = grades;
+  public Dictionary<string, Grade> GetGrades(){
+     return grades;
   }
 
-
-  public Grade Grades{
-    get { return grades}
-    set {
-      if(value < 0 || value > 100){
-        Console.WriteLine("Invalide grade value. Grades can't be higher than 100, or less than 0.");
-        return;
-
-      }
-
-      this.grades = value
-    }
-  }
-
-  public void AddGrade(Grade grade){
-    foreach(Grade g in grades){
-      if(g.subject.name == grade.subject.name){
-        Console.WriteLine("This grade is already recorded.");
-        Console.WriteLine("Maybe you'd like do update it instead.");
-        return;
-      }
-    }
+  public void AddGrade(int gradeKey){
+    bool result = Database.database.GetGrades().Keys.Contains(gradeKey);
+    if(result){
 
     grades.add(grade);
+    }
+
   }
 
   public string Name {
