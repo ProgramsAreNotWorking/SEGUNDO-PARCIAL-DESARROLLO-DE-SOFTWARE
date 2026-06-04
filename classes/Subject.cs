@@ -7,8 +7,8 @@ public class Subject
     private string name;
     private Dictionary<int, Student> students;
     
-    public Subject(string n){
-      name = n;
+    public Subject(string name){
+      this.name = name;
 
       Subject.lastId += 1;
       _id = Subject.lastId;
@@ -41,6 +41,6 @@ public class Subject
     }
 
     public void AddStudent(Student student){
-      
+      students.Add(student._ID, student);
     }
 }

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
 public class Database{
-  public static Database database;
+  public static Database database = new Database();
 
-  private Dictionary<int,Student> students;
-  private Dictionary<int,Subject> subjects;
+  private Dictionary<int,Student> students = [];
+  private Dictionary<int,Subject> subjects = [];
 
   private Database(){
   }
@@ -21,10 +21,8 @@ public class Database{
     return students.ToDictionary();
   }
 
-  public int AddStudent(Student student) {
-    KeyValuePair<int, Student> lastStudent = students.Last();
-    students.Add(lastStudent.Key + 1, student);
-    return lastStudent.Key;
+  public void AddStudent(Student student) {
+    students.Add(student._ID, student);
   }
 
   public void DeleteStudent(int key){
@@ -46,10 +44,8 @@ public class Database{
     }
   }
 
-  public int AddSubject(Subject subject) {
-    KeyValuePair<int, Subject> lastSubject = subjects.Last();
-    subjects.Add(lastSubject.Key + 1, subject);
-    return lastSubject.Key;
+  public void AddSubject(Subject subject) {
+    subjects.Add(subject._ID, subject);
   }
 
   public void DeleteSubject(int key){

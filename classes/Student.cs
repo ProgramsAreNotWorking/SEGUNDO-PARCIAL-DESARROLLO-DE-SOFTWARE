@@ -5,7 +5,7 @@ public class Student {
   private int _id = 0;
   private string name;
   private string surname;
-  private Dictionary<string, Grade> grades = [];
+  private Dictionary<int, Grade> grades = new Dictionary<int, Grade>();
 
   public Student(string name, string surname){
     this.name = name;
@@ -15,11 +15,11 @@ public class Student {
     _id = lastId;
   }
 
-  public Dictionary<string, Grade> GetGrades(){
+  public Dictionary<int, Grade> GetGrades(){
      return grades.ToDictionary();
   }
 
-  public Grade? GetGrade(string gradeKey){
+  public Grade? GetGrade(int gradeKey){
     try{
       return grades[gradeKey];
     }
@@ -29,29 +29,25 @@ public class Student {
     }
   }
 
-  public void AddGrade(string gradeKey, Grade grade){
-    bool gradeKeyExists = grades.Keys.Contains(gradeKey);
+  public void AddGrade(Grade grade){
+    bool gradeKeyExists = grades.ContainsKey(grade.Subject);
 
     if(gradeKeyExists){
-      Console.WriteLine("This key is already use for another grade, try another key.");
+      Console.WriteLine("This grade is already set.");
       return;
     }
-
-    bool gradeExists = grades.Values;
-    
-    if()
-      grades.Add(gradeKey, grade);
+      grades.Add(grade.Subject, grade);
   }
 
-  public void UpdateGrade(string gradeKey, Grade grade){
-    bool gradeExists = grades.Keys.Contains(gradeKey);
+  public void UpdateGrade(Grade grade){
+    bool gradeExists = grades.ContainsKey(grade.Subject);
 
     if(!gradeExists){
       Console.WriteLine("Please, provide a valide grade key");
       return;
     }
 
-    grades[gradeKey] = grade;
+    grades[grade.Subject] = grade;
   }
 
   public string Name {
@@ -76,7 +72,7 @@ public class Student {
     get {
       int total = 0;
 
-      foreach(KeyValuePair<string,Grade> g in grades){
+      foreach(KeyValuePair<int,Grade> g in grades){
         total += g.Value.Total;
       }
 
